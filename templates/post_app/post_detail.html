@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+    <h2>投稿詳細表示</h2>
+    <div>
+        <strong>タイトル</strong>
+        {{ object.title }}
+    </div>
+    <div>
+        <strong>内容</strong>
+        {{ object.content }}
+    </div>
+    <div>
+        <strong>投稿日</strong>
+        {{ object.created_at }}
+    </div>
+    <div>
+        <strong>投稿者</strong>
+        {{ object.created_by }}
+    </div>
+    <div>
+        <a href={% url 'post_app:post_list' %}>投稿一覧</a>
+    </div>
+{%endblock%}
