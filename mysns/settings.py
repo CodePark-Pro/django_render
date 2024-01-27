@@ -43,9 +43,6 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -102,12 +99,17 @@ WSGI_APPLICATION = 'mysns.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Feel free to alter this value to suit your needs.
+#         default='postgresql://postgres:postgres@localhost:5432/mysite',
+#         conn_max_age=600
+#     )
+# }
+default_dburl = "sqlite:///" + str(BASE_DIR / "db.sqlite3")
+
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
+    "default": config("DATABASE_URL", default=default_dburl, cast=dburl),
 }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -173,6 +175,6 @@ EMAIL_HOST_USER = '' #送信元のアドレス(本来はdjango.comみたいな)
 EMAIL_HOST_PASSWORD = '' #セキュリティ上パスワードを打ってそのまま送信されるのはよくない
 EMAIL_USE_TLS = True
 
-SUPERUSER_NAME='admin'
-SUPERUSER_EMAIL='admin@admin.com'
-SUPERUSER_PASSWORD='password'
+SUPERUSER_NAME='admin2'
+SUPERUSER_EMAIL='admin2@admin.com'
+SUPERUSER_PASSWORD='password2'
